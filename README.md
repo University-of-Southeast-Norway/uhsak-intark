@@ -7,10 +7,12 @@ Dette repoet er et felles prosjekt for oppsett av IntArk i forbindelse med UH Sa
 
 ### API
 [system]/[api]/[navn].json
+
 Eks: fs/fs-ws/fs-ws.json
 
 ## Dokumentasjon
 [system]/README.md
+
 [system]/[api]/README.md
 
 ## Utvikling
