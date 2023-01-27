@@ -1,0 +1,145 @@
+{
+  "name": "<name of the API>",
+  "version": "<version of the API in IntArk>",
+  "description": "<a description of the API>",
+  "visibility": "PUBLIC",
+  "gravitee": "2.0.0",
+  "flow_mode": "DEFAULT",
+  "resources": [],
+  "properties": [],
+  "categories": [
+    "<categorize visibility in the IntArk portal>"
+  ],
+  "members": [
+    {
+      "source": "<IDP source name>",
+      "sourceId": "<ID in the IDP source>",
+      "roles": [
+        "<GUID to role>"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "id": "<GUID identifying this page>",
+      "name": "Aside",
+      "type": "SYSTEM_FOLDER",
+      "order": 0,
+      "published": true,
+      "visibility": "PUBLIC",
+      "lastModificationDate": 1672662888041,
+      "contentType": "application/json",
+      "homepage": false,
+      "parentPath": "",
+      "excludedAccessControls": false,
+      "accessControls": [],
+      "api": "<GUID referencing this API>"
+    }
+  ],
+  "plans": [
+    {
+      "id": "<GUID used to identify the plan>",
+      "name": "<name of the plan>",
+      "description": "<description of the plans behavior, limits, requirements etc.>",
+      "validation": "<validation mode, eg. AUTO>",
+      "security": "<security mode, eg. KEY_LESS>",
+      "type": "<plan type, usually API>",
+      "status": "<staus of the plan, eg. PUBLISHED>",
+      "api": "<GUID referencing this API>",
+      "order": 0,
+      "characteristics": [],
+      "created_at": 1672662888212,
+      "updated_at": 1672662888212,
+      "paths": {},
+      "flows": [
+        {
+          "name": "",
+          "path-operator": {
+            "path": "/",
+            "operator": "STARTS_WITH"
+          },
+          "condition": "",
+          "consumers": [],
+          "methods": [],
+          "pre": [
+            {
+              "name": "Resource Filtering",
+              "description": "",
+              "enabled": true,
+              "policy": "resource-filtering",
+              "configuration": {
+                "whitelist": [
+                  {
+                    "methods": [
+                      "GET"
+                    ],
+                    "pattern": "/"
+                  }
+                ]
+              }
+            }
+          ],
+          "post": [],
+          "enabled": true
+        }
+      ],
+      "comment_required": false
+    }
+  ],
+  "metadata": [
+    {
+      "key": "email-support",
+      "name": "email-support",
+      "format": "MAIL",
+      "value": "${(api.primaryOwner.email)!''}",
+      "defaultValue": "support@change.me",
+      "apiId": "<GUID referencing this API>"
+    }
+  ],
+  "id": "<this API's GUID>",
+  "path_mappings": [],
+  "proxy": {
+    "virtual_hosts": [
+      {
+        "path": "<sub path behind IntArk base address that this API is mapped to>"
+      }
+    ],
+    "strip_context_path": false,
+    "preserve_host": false,
+    "groups": [ // Target endpoints that this API is mapped to is grouped together under one or more groups
+      {
+        "name": "default-group",
+        "endpoints": [
+          {
+            "backup": false,
+            "inherit": true,
+            "name": "default",
+            "weight": 1,
+            "type": "http",
+            "target": "<target API endpoint address, eg. https://api.publicapis.org>"
+          }
+        ],
+        "load_balancing": {
+          "type": "ROUND_ROBIN"
+        },
+        "http": {
+          "connectTimeout": 5000,
+          "idleTimeout": 60000,
+          "keepAlive": true,
+          "readTimeout": 10000,
+          "pipelining": false,
+          "maxConcurrentConnections": 100,
+          "useCompression": true,
+          "followRedirects": false
+        }
+      }
+    ]
+  },
+  "response_templates": {},
+  "primaryOwner": {
+    "id": "<GUID to primary owner of the API (usually the creator>",
+    "email": "<emal to primary API owner>",
+    "displayName": "<display name of the API owner>",
+    "type": "USER"
+  }
+}
